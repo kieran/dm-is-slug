@@ -99,7 +99,7 @@ module DataMapper
         end
 
         def get_slug_length
-          slug_property.nil? ? (slug_source_property.nil? ? DataMapper::Property::DEFAULT_LENGTH : slug_source_property.length) : slug_property.length
+          slug_property.nil? ? (slug_source_property.nil? ? DataMapper::Property::String::DEFAULT_LENGTH : slug_source_property.length) : slug_property.length
         end
       end # ClassMethods
 
