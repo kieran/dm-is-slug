@@ -66,7 +66,8 @@ module DataMapper
 
 
         options[:length] ||= get_slug_length
-        property(:slug, String, options.merge(:unique => true)) unless slug_property
+        options.merge(:unique => true) unless options[:unique] == false
+        property(:slug, String, options) unless slug_property
 
         before :valid?, :generate_slug
         before :save, :generate_slug
