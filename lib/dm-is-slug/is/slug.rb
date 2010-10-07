@@ -13,7 +13,7 @@ module DataMapper
         s.gsub!(/\W+/, ' ')
         s.strip!
         s.downcase!
-        s.gsub!(/\ +/, '-')
+        s.gsub!(/\ +/, '_')
         s
       end
 
