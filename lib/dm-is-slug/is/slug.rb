@@ -71,6 +71,17 @@ module DataMapper
 
         before :valid?, :generate_slug
         before :save, :generate_slug
+        
+        # add alternate slug names for nested resources
+        # e.g. /forums/:forum_slug/topics/:topic_slug/
+        class_eval <<-SLUG
+          def #{self.new.class.to_s.snake_case}_slug
+            slug
+          end
+          def #{self.new.class.to_s.snake_case}_slug=(str)
+            self.slug = str            
+          end
+        SLUG
       end
 
       module ClassMethods
